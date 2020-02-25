@@ -1,4 +1,4 @@
-# x5 Dialog
+# x5 Dialog ([Live Demo](https://codesandbox.io/s/x5-dialog-example-jom3k?hidenavigation=1&view=preview))
 
 This is a lightweight dialog plugin for Vue.
 
