@@ -26,9 +26,6 @@
     "url": "https://github.com/xon52/x5-dialog/issues"
   },
   "homepage": "https://github.com/xon52/x5-dialog#readme",
-  "dependencies": {
-    "vue": "^2.6.11"
-  },
   "files": [
     "dist"
   ],
