@@ -27,6 +27,12 @@ this.$confirm({ title: 'This is a confirm dialog.', text: 'It uses the options f
 
 ## Options
 
+### **plugin** _(Vue.use(x5Dialog, **options**))_
+
+| Attribute |  Type  | Default | Description                |
+| :-------- | :----: | :-----: | :------------------------- |
+| zIndex    | Number |  `200`  | `z-index` style for plugin |
+
 ### **`$modal` (options)** _(returns Promise)_
 
 ![Modal](./example/img/modal.png)
