@@ -29,11 +29,7 @@
 </template>
 
 <script>
-import Vue from "vue"
 import Custom from "./Custom"
-
-import x5Dialog from "../dist"
-Vue.use(x5Dialog)
 
 export default {
   name: "Example-App",
