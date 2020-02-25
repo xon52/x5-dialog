@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-import x5Dialog from 'x5-dialog'
+import x5Dialog from '../dist'
 Vue.use(x5Dialog)
 
 new Vue({

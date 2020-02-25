@@ -14,7 +14,7 @@
   }
 }
 
-@keyframes fade-in {
+@keyframes fade {
   0% {
     opacity: 0;
   }
@@ -23,8 +23,8 @@
   }
 }
 .fade-enter-active {
-  animation: fade-in 0.2s;
+  animation: fade 0.2s;
 }
 .fade-leave-active {
-  animation: fade-in 0.2s reverse;
+  animation: fade 0.2s reverse;
 }

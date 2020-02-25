@@ -3,6 +3,7 @@
     <div
       v-if="modal"
       :class="`x5-d-modal-wrapper ${options.overlay?'x5-d-overlay':''}`"
+      :style="`z-index:${$root.options.zIndex}`"
       @click.self="overlayClick"
     >
       <div

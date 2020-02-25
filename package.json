@@ -1,8 +1,8 @@
 {
   "private": false,
   "name": "x5-dialog",
-  "version": "0.1.1",
-  "description": "A lightweight dialog and modal Vue plugin",
+  "version": "0.1.2",
+  "description": "A lightweight dialog and modal plugin for Vue",
   "main": "dist",
   "scripts": {
     "serve": "npx vue-cli-service serve example",
