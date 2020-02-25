@@ -1,11 +1,11 @@
 {
   "private": false,
   "name": "x5-dialog",
-  "version": "0.1.0",
-  "description": "A lightweight dialog, and modal Vue plugin",
-  "main": "dist/x5dialog.js",
+  "version": "0.1.1",
+  "description": "A lightweight dialog and modal Vue plugin",
+  "main": "dist",
   "scripts": {
-    "serve": "npx vue-cli-service serve example/index",
+    "serve": "npx vue-cli-service serve example",
     "build": "webpack",
     "build-vue-cli": "npx vue-cli-service build --target lib --filename index.js src/index.js"
   },
