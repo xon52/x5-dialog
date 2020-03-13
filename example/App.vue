@@ -23,58 +23,57 @@
     <p>This is the output / return value from the dialog boxes.</p>
     <p>They all return promises and have callback property functions for each interaction and event.</p>
     <div>
-      <span :class="`output ${output?'output-active':''}`">{{output?output:'Nothing returned yet.'}}</span>
+      <span :class="`output ${output ? 'output-active' : ''}`">{{ output ? output : 'Nothing returned yet.' }}</span>
     </div>
+    <!-- Plugin Component -->
+    <x5-dialog></x5-dialog>
   </div>
 </template>
 
 <script>
-import Custom from "./Custom"
+import Custom from './Custom'
 
 export default {
-  name: "Example-App",
+  name: 'Example-App',
   data: () => ({
-    text: "This is some example text you can change.",
-    output: ""
+    text: 'This is some example text you can change.',
+    output: '',
   }),
   methods: {
     alert() {
-      this.$alert({
-        title: "This is an alert dialog",
-        text: `${this.text}`
+      this.$alert(this.text, {
+        title: 'This is an alert dialog',
       }).then(res => {
-        if (res) this.output = "You pressed OK"
-        else this.output = "You cancelled"
+        if (res) this.output = 'You pressed OK'
+        else this.output = 'You cancelled'
       })
     },
     confirm() {
-      this.$confirm({
-        title: "This is a confirm dialog",
-        text: `${this.text}`
+      this.$confirm(this.text, {
+        title: 'This is a confirm dialog',
       }).then(res => {
-        if (res) this.output = "You pressed OK"
-        else this.output = "You cancelled"
+        if (res) this.output = 'You pressed OK'
+        else this.output = 'You cancelled'
       })
     },
     prompt() {
-      this.$prompt({
-        title: "This is a prompt dialog",
-        text: `${this.text}`,
-        rules: [v => (v && v.length > 3) || "Length must be >3."],
-        permanent: true
+      this.$prompt(this.text, {
+        title: 'This is a prompt dialog',
+        rules: [v => (v && v.length > 3) || 'Length must be >3.'],
+        permanent: true,
       }).then(res => {
         if (res) this.output = res
-        else this.output = "You cancelled"
+        else this.output = 'You cancelled'
       })
     },
     custom() {
       this.$modal(Custom, {
-        permanent: true
+        permanent: true,
       }).then(res => {
         if (res) this.output = res
       })
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -83,7 +82,7 @@ export default {
   text-align: center;
 }
 .row {
-	position: relative;
+  position: relative;
   margin-bottom: 10px;
 }
 .line {
@@ -99,6 +98,7 @@ button {
   font-size: 20px;
 }
 .output-active {
-  background: rgba(247, 0, 255, 0.465);
+  color: aliceblue;
+  background: dodgerblue;
 }
 </style>

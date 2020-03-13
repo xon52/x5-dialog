@@ -11,18 +11,79 @@
 
   .x5-d-modal {
     background-color: #fff;
+    border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
     left: 50%;
-    max-height: 80vh;
-    max-width: 500px;
-    overflow: auto;
+    overflow: hidden;
     position: fixed;
     top: 50%;
     transform: translate(-50%, -50%);
     transition: all 0.3s ease;
     width: 100%;
     &.x5-d-attention {
-      animation: shake 150ms;
+      animation: x5-d-shake 150ms;
+    }
+    .x5-d-header {
+      background: #fafafa;
+      border-bottom: #eee 1px solid;
+      border-radius: 2px 2px 0 0;
+      color: #333;
+      font-size: 22px;
+      font-weight: bold;
+      padding: 16px 54px 16px 24px;
+      position: relative;
+      text-align: left;
+      .x5-d-close {
+        font-size: 14px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 24px;
+        color: transparent;
+        cursor: pointer;
+        text-shadow: 0 0 0 #999;
+        &:hover {
+          text-shadow: 0 0 0 #666;
+        }
+      }
+    }
+    .x5-d-content {
+      max-height: 70vh;
+      overflow: auto;
+      padding: 20px 36px;
+    }
+    .x5-d-footer {
+      background: #fbfbfb;
+      border-radius: 0 0 2px 2px;
+      border-top: #eee 1px solid;
+      text-align: end;
+      button {
+        background-color: transparent;
+        border: 0 solid #4442;
+        color: #666;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        height: 40px;
+        margin: 4px 20px 4px 0;
+        min-width: 80px;
+        padding: 1px 6px;
+        &.x5-d-ok {
+          border-color: #1e90ff80;
+          color: dodgerblue;
+          &:hover {
+            background-color: #68b1fa42;
+          }
+        }
+        &:hover {
+          border-width: 1px;
+        }
+        &:disabled {
+          border-width: 0;
+          color: #ccc;
+          cursor: unset;
+        }
+      }
     }
   }
 }

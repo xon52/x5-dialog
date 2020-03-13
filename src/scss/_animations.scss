@@ -1,4 +1,4 @@
-@keyframes shake {
+@keyframes x5-d-shake {
   14%,
   70% {
     transform: translate(-49%, -49%);
@@ -14,7 +14,7 @@
   }
 }
 
-@keyframes fade {
+@keyframes x5-d-fade {
   0% {
     opacity: 0;
   }
@@ -22,9 +22,9 @@
     opacity: 1;
   }
 }
-.fade-enter-active {
-  animation: fade 0.2s;
+.x5-d-fade-enter-active {
+  animation: x5-d-fade 0.2s;
 }
-.fade-leave-active {
-  animation: fade 0.2s reverse;
+.x5-d-fade-leave-active {
+  animation: x5-d-fade 0.2s reverse;
 }

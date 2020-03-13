@@ -15,20 +15,19 @@
       <strong>"w00t!"</strong>):
       <button @click="close('w00t!')">close</button>
     </p>
-    <p>But unfortunately, loses it's "this" context, so you must make standalone components for it now.</p>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Custom",
+  name: 'Custom',
   props: {
-    close: { type: Function }
+    close: { type: Function },
   },
   methods: {
-	  extra() {
-		  this.$alert('Another? Really?? 🧐')
-	  }
-  }
+    extra() {
+      this.$alert('Another? Really?? 🧐')
+    },
+  },
 }
 </script>

@@ -1,5 +1,8 @@
 # x5 Dialog ([Live Demo](https://codesandbox.io/s/x5-dialog-example-jom3k?hidenavigation=1&view=preview))
 
+![GitHub file size in bytes](https://img.shields.io/github/size/xon52/x5-dialog/dist/index.js)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/x5-dialog)
+
 This is a lightweight dialog plugin for Vue.
 
 :warning: This plugin is in development, so please let me know if you find any errors.
@@ -8,61 +11,95 @@ This is a lightweight dialog plugin for Vue.
 
 ```bash
 # npm
-npm install x5-dialog --save
+npm install x5-dialog
 ```
 
 ## Deployment
 
+This plugin does require a [Vuex store](https://vuex.vuejs.org/) and can be installed like any Vue plugin in your entry
+point:
+
 ```js
+Vue.use(Vuex)
+const store = new Vuex.Store()
+
 import x5Dialog from 'x5-dialog'
-Vue.use(x5Dialog)
+Vue.use(x5Dialog, store)
+
+new Vue({
+  el: '#app',
+  store: store,
+  render: h => h(App),
+})
 ```
 
-## Usage
+This plugin uses a component to house all the magic, so it's recommended to put this near the end of your Vue app (e.g.
+bottom of your App.vue template)
 
-```js
-this.$alert('This is an alert dialog.')
-this.$confirm({ title: 'This is a confirm dialog.', text: 'It uses the options format to ste things like title.' })
+```html
+<div id="app">
+  ...
+  <x5-dialog></x5-dialog>
+</div>
 ```
 
-## Options
+| Attribute |  Type  | Default | Description              |
+| :-------- | :----: | :-----: | :----------------------- |
+| zIndex    | Number |  `200`  | z-index style for plugin |
 
-### **plugin** _(Vue.use(x5Dialog, **options**))_
+<br>
 
-| Attribute |  Type  | Default | Description                |
-| :-------- | :----: | :-----: | :------------------------- |
-| zIndex    | Number |  `200`  | `z-index` style for plugin |
+# Usage
 
-### **`$modal` (options)** _(returns Promise)_
+## Custom Modal - `this.$modal(component, options)`
 
 ![Modal](./example/img/modal.png)
 
-| Attribute |   Type   | Default | Description                                        |
-| :-------- | :------: | :-----: | :------------------------------------------------- |
-| onClose   | Function |   --    | Callback for when the message is closed            |
-| overlay   | Boolean  | `true`  | Darken page behind background                      |
-| permanent | Boolean  | `false` | Only allow closing the window via provided buttons |
-| width     |  Number  |  `500`  | Maximum window width                               |
-| class     |  String  |   --    | Extra classes for the window                       |
-| style     |  String  |   --    | Extra styles for the window                        |
+```js
+import CustomComponent from './CustomComponent.vue'
 
-### **`$alert`, `$confirm`, `$prompt` (options)** _(returns Promise)_
+export default {
+  methods: {
+    open() {
+      this.$modal(CustomComponent, { permanent: true })
+    },
+  },
+}
+```
 
-![Alert](./example/img/alert.png)
-![Confirm](./example/img/confirm.png)
-![Prompt](./example/img/prompt.png)
+| Option        |       Type       | Default | Description                                        |
+| :------------ | :--------------: | :-----: | :------------------------------------------------- |
+| buttons       |      String      |  'OK'   | Buttons to show (`OK`, `OKCancel`, `Cancel`)       |
+| cancelDefault |       Any        | `false` | Promise default return value on cancel             |
+| cancelText    |      String      | Cancel  | Cancel button label                                |
+| data          |       Any        |  null   | Offers custom component prop 'data'                |
+| okDefault     |       Any        | `true`  | Promise default return value on OK                 |
+| okText        |      String      |   OK    | OK button label                                    |
+| onCancel      | (async) Function |   --    | Callback for cancel                                |
+| onClose       |     Function     |   --    | Callback for when the modal is closed              |
+| onOK          | (async) Function |   --    | Callback for ok                                    |
+| permanent     |     Boolean      | `false` | Only allow closing the window via provided buttons |
+| title         |      String      |  null   | Modal header title (leave empty for no header)     |
+| width         |      Number      |  `500`  | Maximum window width                               |
 
-:information_source: These attributes and options extend \$modal's (above)
-| Attribute | Type | Default | Description |
-| :--- | :---: | :---: | :--- |
-| text | String | -- | Message text (required) |
-| title | String | -- | Dialog header bar title |
-| onClose | Function | -- | Callback for when the message is closed |
-| onCancel | Function | -- | Callback for cancelling the Dialog |
-| onOK | Function | -- | Callback for confirming the Dialog |
-| labelOK | String | OK | OK button label |
-| labelCancel | String | Cancel | Cancel button label |
-| rules | Array | `[]` | Array of functions to test prompt input against |
+## Dialog - `this.$alert(text, options)`
+
+![Alert](./example/img/alert.png) ![Confirm](./example/img/confirm.png) ![Prompt](./example/img/prompt.png)
+
+```js
+this.$alert('This is an alert dialog.')
+this.$confirm('A confirm with a title.', { title: 'This is a confirm dialog.' })
+```
+
+:information_source: Prompt has one extra option to those above
+
+| Option | Type  | Default | Description                                     |
+| :----- | :---: | :-----: | :---------------------------------------------- |
+| rules  | Array |  `[]`   | Array of functions to test prompt input against |
+
+<br>
+
+---
 
 ## Contributing
 
@@ -70,7 +107,7 @@ Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for the process for submitting 
 
 ## Authors
 
-- **Keagan Chisnall** - [xon52](https://github.com/xon52)
+- [Keagan Chisnall](https://github.com/xon52)
 
 ## License
 

@@ -1,27 +1,66 @@
-import Vue from 'vue'
-import x5DVue from './js/x5DVue'
+import Component from './Component.vue'
+import PluginStore from './store'
 import './scss/index.scss'
 
-export default {
-  // Public Methods
-  modal: (component, options) => x5DVue.add('modal', options, component),
-  alert: (payload) => x5DVue.add('alert', payload),
-  confirm: (payload) => x5DVue.add('confirm', payload),
-  prompt: (payload) => x5DVue.add('prompt', payload),
+// Modal defaults
+const defaultOptions = {
+  buttons: 'OK',
+  cancelDefault: false,
+  cancelText: 'Cancel',
+  data: null,
+  okDefault: true,
+  okText: 'OK',
+  onCancel: () => {},
+  onClose: () => {},
+  onOK: () => {},
+  permanent: false,
+  rules: [],
+  title: null,
+  width: '650px',
+}
 
-  install (Vue, options) {
-	  // Set options
-	x5DVue.setOptions(options)
-    // Create and mount HTML element for new Vue
-    const el = document.createElement('div')
-    el.setAttribute('id', 'x5-d-vue')
-    document.body.appendChild(el)
-    x5DVue.$mount('#x5-d-vue')
-    // Create hooks for Vue
-    Vue.prototype.$modal = this.modal
-    Vue.prototype.$alert = this.alert
-    Vue.prototype.$confirm = this.confirm
-    Vue.prototype.$prompt = this.prompt
+// Options
+const typeOptions = ['alert', 'confirm', 'prompt']
+const buttonsOptions = ['OK', 'Cancel', 'OKCancel']
+
+export default function(Vue, store) {
+  // Register Vuex store
+  if (!store) throw new Error('A Vuex store is required by the x5Dialog plugin')
+  store.registerModule('x5/d', PluginStore)
+  // Register component
+  Vue.component('x5Dialog', Component)
+  // Add function
+  const add = (options, component) => {
+    // Check type matches options
+    if (options.type && !typeOptions.includes(options.type))
+      throw new Error(
+        `Invalid type "${options.type}" used in x5Dialog Plugin. Valid options include: ${typeOptions.join(', ')}.`,
+      )
+    // Check buttons matches options
+    if (options.buttons && !buttonsOptions.includes(options.buttons))
+      throw new Error(
+        `Invalid buttons "${options.buttons}" used in x5Dialog Plugin. Valid options include: ${buttonsOptions.join(
+          ', ',
+        )}.`,
+      )
+    // Initial modal creation
+    let modal = { ...defaultOptions, ...options, component }
+    // Add close function
+    modal.close = val => {
+      if (modal.onClose) modal.onClose(val)
+      modal.resolve(val)
+      store.dispatch('x5/d/remove')
+    }
+    // Add promise to modal and return reference
+    const promise = new Promise(resolve => (modal.resolve = resolve))
+    store.dispatch('x5/d/add', modal)
+    return promise
   }
-
+  // Create hooks on main vue
+  Vue.prototype.$alert = (text, options) => add({ text, type: 'alert', buttons: 'OK', width: '500px', ...options })
+  Vue.prototype.$confirm = (text, options) =>
+    add({ text, type: 'confirm', buttons: 'OKCancel', width: '500px', ...options })
+  Vue.prototype.$prompt = (text, options) =>
+    add({ text, type: 'prompt', buttons: 'OKCancel', width: '500px', ...options })
+  Vue.prototype.$modal = (component, options) => add({ ...options }, component)
 }
