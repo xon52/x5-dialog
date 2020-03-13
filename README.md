@@ -67,20 +67,20 @@ export default {
 }
 ```
 
-| Option        |       Type       | Default | Description                                        |
-| :------------ | :--------------: | :-----: | :------------------------------------------------- |
-| buttons       |      String      |  'OK'   | Buttons to show (`OK`, `OKCancel`, `Cancel`)       |
-| cancelDefault |       Any        | `false` | Promise default return value on cancel             |
-| cancelText    |      String      | Cancel  | Cancel button label                                |
-| data          |       Any        |  null   | Offers custom component prop 'data'                |
-| okDefault     |       Any        | `true`  | Promise default return value on OK                 |
-| okText        |      String      |   OK    | OK button label                                    |
-| onCancel      | (async) Function |   --    | Callback for cancel                                |
-| onClose       |     Function     |   --    | Callback for when the modal is closed              |
-| onOK          | (async) Function |   --    | Callback for ok                                    |
-| permanent     |     Boolean      | `false` | Only allow closing the window via provided buttons |
-| title         |      String      |  null   | Modal header title (leave empty for no header)     |
-| width         |      Number      |  `500`  | Maximum window width                               |
+| Option      |       Type       | Default | Description                                        |
+| :---------- | :--------------: | :-----: | :------------------------------------------------- |
+| buttons     |      String      |  'OK'   | Buttons to show (`OK`, `OKCancel`, `Cancel`)       |
+| cancelvalue |       Any        | `false` | Promise return value on cancel                     |
+| cancelText  |      String      | Cancel  | Cancel button label                                |
+| data        |       Any        |  null   | Offers custom component prop 'data'                |
+| okValue     |       Any        | `true`  | Promise return value on OK                         |
+| okText      |      String      |   OK    | OK button label                                    |
+| onCancel    | (async) Function |   --    | Callback for cancel                                |
+| onClose     |     Function     |   --    | Callback for when the modal is closed              |
+| onOK        | (async) Function |   --    | Callback for ok                                    |
+| permanent   |     Boolean      | `false` | Only allow closing the window via provided buttons |
+| title       |      String      |  null   | Modal header title (leave empty for no header)     |
+| width       |      Number      |  `500`  | Maximum window width                               |
 
 ## Dialog - `this.$alert(text, options)`
 

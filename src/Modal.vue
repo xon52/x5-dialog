@@ -55,13 +55,13 @@ export default {
   methods: {
     async cancel() {
       if (this.modal.onCancel) await this.modal.onCancel()
-      this.modal.close(this.modal.cancelDefault)
+      this.modal.close(this.modal.cancelValue)
     },
     async ok() {
       this.working = true
       await this.modal.onOK(this.val)
       this.working = false
-      this.modal.close(this.val || this.modal.okDefault)
+      this.modal.close(this.val || this.modal.okValue)
     },
   },
 }

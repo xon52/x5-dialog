@@ -5,10 +5,10 @@ import './scss/index.scss'
 // Modal defaults
 const defaultOptions = {
   buttons: 'OK',
-  cancelDefault: false,
+  cancelValue: false,
   cancelText: 'Cancel',
   data: null,
-  okDefault: true,
+  okValue: true,
   okText: 'OK',
   onCancel: () => {},
   onClose: () => {},
