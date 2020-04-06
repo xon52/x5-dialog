@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <img class="logo" src="./x5-d-logo.svg" width="300" />
+    <img class="logo" src="./logo.svg" width="300" />
     <h1 class="title">x5-Dialog Example</h1>
     <!-- Dialogs -->
     <h2>Normal Dialogs</h2>
