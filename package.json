@@ -1,7 +1,7 @@
 {
   "private": false,
   "name": "x5-dialog",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "A lightweight dialog and modal plugin for Vue",
   "main": "dist",
   "scripts": {
@@ -30,18 +30,18 @@
     "dist"
   ],
   "devDependencies": {
-    "@vue/cli-service": "^4.4.6",
-    "css-loader": "^3.6.0",
-    "eslint": "^6.7.2",
+    "@vue/cli-service": "^4.5.6",
+    "css-loader": "^4.3.0",
+    "eslint": "^7.9.0",
     "eslint-plugin-vue": "^6.2.2",
     "node-sass": "^4.14.1",
-    "sass-loader": "^8.0.2",
+    "sass-loader": "^9.0.3",
     "style-loader": "^1.2.1",
-    "vue": "^2.6.11",
+    "vue": "^2.6.12",
     "vue-loader": "^15.9.3",
-    "vue-template-compiler": "^2.6.11",
+    "vue-template-compiler": "^2.6.12",
     "vuex": "^3.5.1",
-    "webpack": "^4.44.1",
+    "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"
   },
   "peerdependencies": {
