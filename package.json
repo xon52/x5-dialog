@@ -1,7 +1,7 @@
 {
   "private": false,
   "name": "x5-dialog",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "A lightweight dialog and modal plugin for Vue",
   "main": "dist",
   "scripts": {
